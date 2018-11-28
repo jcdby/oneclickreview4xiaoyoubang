@@ -57,18 +57,11 @@ function getStudents(sid) {
     console.log("students ready!");
     if (students && students.length > 0) {
       resolve_review(students, sid);
-<<<<<<< HEAD
-    } else {
-      console.log("No studens to review!");
-    }
-
-=======
 
     } else {
       console.log("没有学生可以批阅！");
 
     }
->>>>>>> 4cf7949097552c449efa264070f5f7c34320d756
   });
 }
 
@@ -86,11 +79,7 @@ async function resolve_review(students,sid) {
       var isSuccess = JSON.parse(res_body).success;
       while(!isSuccess && --num_retry) {
         version += 1;
-<<<<<<< HEAD
-        console.log("for student %a, retry %b", student.id, version);
-=======
         console.log(" student %s retry %s ", student.name, version);
->>>>>>> 4cf7949097552c449efa264070f5f7c34320d756
         options = setOptions(id,sid,version);
         res_body = await requestToReview(options)
         isSuccess = JSON.parse(res_body).success;
