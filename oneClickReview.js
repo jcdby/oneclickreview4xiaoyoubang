@@ -49,7 +49,12 @@ function getStudents(sid) {
     students = students && students.datas;
     console.log(students)
     console.log("students ready!");
-    resolve_review(students, sid);
+    if (students && students.length > 0) {
+      resolve_review(students, sid);
+    } else {
+      console.log("No studens to review!");
+    }
+
   });
 }
 
@@ -67,6 +72,7 @@ async function resolve_review(students,sid) {
       var isSuccess = JSON.parse(res_body).success;
       while(!isSuccess && --num_retry) {
         version += 1;
+        console.log("for student %a, retry %b", student.id, version);
         options = setOptions(id,sid,version);
         res_body = await requestToReview(options)
         isSuccess = JSON.parse(res_body).success;

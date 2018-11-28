@@ -1,0 +1,22 @@
+{
+  "name": "oneclickreview4xiaoyoubang",
+  "version": "1.0.0",
+  "description": "校友邦教师登陆后，获取JSESSIONID,使用获取的JSESSIONID执行如下命令：",
+  "main": "oneClickReview.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcdby/oneclickreview4xiaoyoubang.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcdby/oneclickreview4xiaoyoubang/issues"
+  },
+  "homepage": "https://github.com/jcdby/oneclickreview4xiaoyoubang#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
