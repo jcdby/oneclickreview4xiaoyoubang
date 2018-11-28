@@ -8,16 +8,24 @@ var frequen_reply_to_students = [
 
 var args = process.argv;
 var sid = "";
+var blogType = "d";
 console.log(args);
 
 
 var index = args.indexOf("--sid");
-index = index == -1 ? false : index + 1;
+var blogTypeIndex = args.indexOf("--type");
+index = index === -1 ? false : index + 1;
+blogTypeIndex = blogTypeIndex === -1 ? false : blogTypeIndex + 1;
 
 
 if (index) {
   sid = args[index];
   console.log(sid);
+}
+
+if (blogTypeIndex) {
+  blogType = args[blogTypeIndex];
+  console.log(blogType);
 }
 
 
@@ -33,7 +41,7 @@ function getStudents(sid) {
     },
     formData: {
       on: 'true',
-      type: 'd',
+      type: blogType,
       schoolyear: '2018',
       schoolTermId: '1159',
       status: 'REVIEW_WAIT',
@@ -97,7 +105,8 @@ function setOptions(id,sid, version) {
       'Postman-Token': '1020032f-471d-4f57-90e1-38bc7bf3cf39',
       'cache-control': 'no-cache',
       Cookie: 'JSESSIONID='+sid+'; Hm_lvt_5b943524066f14e8c8dc6a3c3a69d9ca=1540560756; xybsyw_login_method_type=NORMAL; xybsyw_login_school_id=7822; xybsyw_login_school_name=%E6%B1%9F%E8%8B%8F%E5%A4%A7%E5%AD%A6; xybsyw_login_user_name=1000004788; Hm_lpvt_5b943524066f14e8c8dc6a3c3a69d9ca=1540562736; SERVERID=a400a61a5a6aa2ec013302c9b2706450|1540562744|1540560755',
-      'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
+      'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+      referer: "https://www.xybsyw.com/practice/school/blogs/weeklyBlogsReview.xhtml"
     },
     formData: {
       blogsId: id,
