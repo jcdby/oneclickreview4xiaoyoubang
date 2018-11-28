@@ -2,10 +2,8 @@ var request = require("request");
 var students = [];
 var jsessionid = "";
 var frequen_reply_to_students = [
-  "已阅。注意身体！",
-  '已阅， 实习辛苦了，注意身体',
-  '注意身体！',
-  '已阅。加油！'
+  "已阅。祝贺顺利完成毕业实习!",
+  '已阅， 实习辛苦了,祝贺顺利完成毕业实习!'
 ];
 
 var args = process.argv;
@@ -47,9 +45,15 @@ function getStudents(sid) {
     if (error) throw new Error(error);
     students = JSON.parse(body);
     students = students && students.datas;
-    console.log(students)
+    console.log(students);
     console.log("students ready!");
-    resolve_review(students, sid);
+    if (students && students.length > 0) {
+      resolve_review(students, sid);
+
+    } else {
+      console.log("没有学生可以批阅！");
+
+    }
   });
 }
 
@@ -67,12 +71,13 @@ async function resolve_review(students,sid) {
       var isSuccess = JSON.parse(res_body).success;
       while(!isSuccess && --num_retry) {
         version += 1;
+        console.log(" student %s retry %s ", student.name, version);
         options = setOptions(id,sid,version);
         res_body = await requestToReview(options)
         isSuccess = JSON.parse(res_body).success;
       }
 
-      console.log(res_body)
+      console.log(res_body);
 
         
   })
