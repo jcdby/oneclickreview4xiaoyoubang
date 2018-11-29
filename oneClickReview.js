@@ -1,21 +1,27 @@
 var request = require("request");
+var commands = new require("./commands")();
 var students = [];
 var jsessionid = "";
 var frequen_reply_to_students = [
   "已阅。祝贺顺利完成毕业实习!",
   '已阅， 实习辛苦了,祝贺顺利完成毕业实习!'
 ];
-
+// some test
 var args = process.argv;
 var sid = "";
 var blogType = "d";
+var command = "rb"; // review blogs.
 console.log(args);
+
+
 
 
 var index = args.indexOf("--sid");
 var blogTypeIndex = args.indexOf("--type");
+var commandIndex = args.indexOf("--command");
 index = index === -1 ? false : index + 1;
 blogTypeIndex = blogTypeIndex === -1 ? false : blogTypeIndex + 1;
+commandIndex = commandIndex === -1 ? false : commandIndex + 1;
 
 
 if (index) {
@@ -26,6 +32,10 @@ if (index) {
 if (blogTypeIndex) {
   blogType = args[blogTypeIndex];
   console.log(blogType);
+}
+
+if (commandIndex) {
+
 }
 
 
@@ -57,6 +67,7 @@ function getStudents(sid) {
     console.log("students ready!");
     if (students && students.length > 0) {
       resolve_review(students, sid);
+      console.log("Will review total %d studens. ", students.length);
 
     } else {
       console.log("没有学生可以批阅！");
