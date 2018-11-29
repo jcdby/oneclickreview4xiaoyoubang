@@ -19,7 +19,7 @@ var frequen_reply_to_students = [
 // some test
 var args = process.argv;
 var sid = "";
-var blogType = "d";
+var blogType = "d"; // d means day, w means week.
 var command = "rb"; // review blogs. this is default command
 console.log(args);
 
@@ -91,7 +91,7 @@ function reviewBlogs() {
   });
 }
 
-async function resolveReviewBlogs(students,sid) {
+function resolveReviewBlogs(students,sid) {
 
   var num_retry = 10;
   students.forEach(async function(student) {
@@ -158,7 +158,7 @@ function reviewReports() {
 };
 
 
-async function resolveReviewReports (students) {
+function resolveReviewReports (students) {
     var num_retry = 10;
     students.forEach(async function(student) {
         var id = student.id;
